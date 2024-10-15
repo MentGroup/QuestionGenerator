@@ -1,0 +1,16 @@
+.questions-container {
+    margin-top: 20px;
+  }
+  
+  .questions-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .questions-container li {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+  }
+  
