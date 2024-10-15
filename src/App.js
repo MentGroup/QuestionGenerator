@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
-import InputForm from './components/Input'; // Ensure this is the correct path
-import Questions from './components/Questions'; // Ensure this is the correct path
-import mentIcon from './assets/MENT-Icon.jpeg'; // Ensure logo path is correct
-import './styles/App.css'; // Path to the CSS file
+import InputForm from './components/Input'; // Path to InputForm
+import './styles/App.css'; // Import your styles
+import mentIcon from './assets/MENT-Icon.jpeg'; // Import the logo
 
 function App() {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const generateQuestions = async (text) => {
-    setLoading(true);
-    setTimeout(() => {
-      const mockQuestions = [
-        "What is the main idea of the paragraph?",
-        "How would you summarize the content?"
-      ];
-      setQuestions(mockQuestions);
-      setLoading(false);
-    }, 2000); // Simulate a 2-second delay
+  const generateQuestions = (newQuestions) => {
+    setQuestions(newQuestions); // Update the questions to display
   };
 
   return (
@@ -26,16 +17,28 @@ function App() {
         <img src={mentIcon} alt="MENT Logo" className="logo" />
         <span className="header-title">MENT</span>
       </div>
+
       <h1>Question Generator</h1>
+
       <div className="input-form-container">
         <InputForm onGenerate={generateQuestions} />
       </div>
 
-      {!loading && questions.length > 0 && (
-        <Questions questions={questions} />
-      )}
-
-      {loading && <div className="loader">Generating Questions...</div>}
+      {/* Display Questions */}
+      <div className="questions-container">
+        {questions.length > 0 && (
+          <>
+            <h2>Generated Questions:</h2>
+            <ul>
+              {questions.map((question, index) => (
+                <li key={index} className="question">
+                  {question}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   );
 }
