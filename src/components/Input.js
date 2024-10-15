@@ -1,25 +1,27 @@
-// Input.js
 import React, { useState } from 'react';
 
 function InputForm({ onGenerate }) {
-  const [text, setText] = useState('');
+  const [inputText, setInputText] = useState('');
 
-  const handleGenerate = () => {
-    onGenerate(text);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputText) {
+      onGenerate(inputText);
+    }
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit} className="input-form">
       <textarea
         className="input-textarea"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
         placeholder="Enter your paragraph here..."
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
       />
-      <button className="generate-btn" onClick={handleGenerate}>
-        Generate Questions
-      </button>
-    </div>
+      <div className="button-container">
+        <button type="submit" className="generate-btn">Generate Questions</button>
+      </div>
+    </form>
   );
 }
 
