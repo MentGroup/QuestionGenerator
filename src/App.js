@@ -21,21 +21,28 @@ function App() {
       <h1>Question Generator</h1>
 
       <div className="input-form-container">
-        <InputForm onGenerate={generateQuestions} />
-      </div>
+        {!loading && questions.length === 0 && (
+          <InputForm onGenerate={generateQuestions} setLoading={setLoading} />
+        )}
 
-      {/* Display Questions */}
-      <div className="questions-container">
-        {questions.length > 0 && (
+        {loading && (
+          <div className="loading-container">
+            <div className="loading-text">Generating Questions...</div>
+          </div>
+        )}
+
+        {!loading && questions.length > 0 && (
           <>
-            <h2>Generated Questions:</h2>
-            <ul>
-              {questions.map((question, index) => (
-                <li key={index} className="question">
-                  {question}
-                </li>
-              ))}
-            </ul>
+            <h2 className="generated-title">Generated Questions:</h2>
+            <div className="questions-container">
+              <ul>
+                {questions.map((question, index) => (
+                  <li key={index} className="question">
+                    {question}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </>
         )}
       </div>

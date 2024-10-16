@@ -1,47 +1,44 @@
 import React, { useState } from 'react';
-import axios from 'axios'; 
 
-function InputForm({ onGenerate }) {
-  const [inputText, setInputText] = useState('');
-  const [loading, setLoading] = useState(false);
+function InputForm({ onGenerate, setLoading }) {
+  const [prompt, setPrompt] = useState('');
 
-  // Handle the submission of the form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (inputText) {
-      setLoading(true); 
-      try {
 
-        const response = await axios.post('http://localhost:3007/generate-questions', {
-          prompt: inputText
-        });
+    if (!prompt) return;
 
-        
-        const { questions } = response.data;
+    setLoading(true);
 
-        
-        onGenerate(questions);
+    try {
+      const response = await fetch('http://localhost:3007/generate-questions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
 
-      } catch (error) {
-        console.error('Error generating questions:', error);
-        alert('Error generating questions. Please try again.');
-      } finally {
-        setLoading(false); // Stop loading animation
-      }
+      const data = await response.json();
+      onGenerate(data.questions); // Send questions to parent component
+    } catch (error) {
+      console.error('Error generating questions:', error);
     }
+
+    setLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="input-form">
+    <form onSubmit={handleSubmit}>
       <textarea
         className="input-textarea"
-        placeholder="Enter your paragraph here..."
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        placeholder="Enter your essay or prompt here..."
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
       />
       <div className="button-container">
-        <button type="submit" className="generate-btn" disabled={loading}>
-          {loading ? 'Generating...' : 'Generate Questions'}
+        <button type="submit" className="generate-btn">
+          Generate Questions
         </button>
       </div>
     </form>

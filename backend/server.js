@@ -1,18 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAIApi = require('openai');  // OpenAI v4 doesn't use the Configuration class
 require('dotenv').config();  // Ensure your .env file contains the correct API key
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Correctly setting up OpenAI configuration
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY, // Make sure the .env file has OPENAI_API_KEY set
-});
-const openai = new OpenAIApi(configuration);  // Correct use of OpenAIApi with Configuration
+// Set up the OpenAI API key
+const openai = new OpenAIApi({ apiKey: process.env.OPENAI_API_KEY });  // Direct use of OpenAIApi with API key
 
 // Route to handle question generation
 app.post('/generate-questions', async (req, res) => {
@@ -24,8 +21,8 @@ app.post('/generate-questions', async (req, res) => {
   }
 
   try {
-    // Create a chat completion using GPT-3.5 Turbo model with a clear system message
-    const completion = await openai.createChatCompletion({
+    // Create a chat completion using GPT-3.5 Turbo model
+    const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
         {
@@ -36,19 +33,19 @@ app.post('/generate-questions', async (req, res) => {
           role: 'user',
           content: `
             The following is a description written by a student preparing for a mentoring call.
-            Based on this description, generate 10-15 straightforward questions the student could ask 
-            their mentor to gain more insight and guidance. Keep the questions practical and helpful for the mentoring session:
+            Based only this description/text, generate 10-15 straightforward questions the student could ask 
+            their mentor to gain more insight and guidance. Keep the questions practical and helpful for the mentoring session, Ensure the response only includes the questions, without any extra text:
 
             Student's Description: "${prompt}"
           `
         }
       ],
-      max_tokens: 2000,  // Allow a larger range for responses
-      temperature: 0.7,  // Adds some creativity while keeping responses grounded
+      max_tokens: 2000,
+      temperature: 0.7,
     });
 
     // Split the response into individual questions
-    const questions = completion.data.choices[0].message.content.trim().split('\n').filter(Boolean);
+    const questions = completion.choices[0].message.content.trim().split('\n').filter(Boolean);
 
     // Return the generated questions in JSON format
     res.json({ questions });
