@@ -32,7 +32,7 @@ function InputForm({ onGenerate, setLoading }) {
     <form onSubmit={handleSubmit}>
       <textarea
         className="input-textarea"
-        placeholder="Enter your essay or prompt here..."
+        placeholder="Enter your description here..."
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
       />

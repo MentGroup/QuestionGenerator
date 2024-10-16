@@ -30,18 +30,51 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+
+
 .generated-title {
   font-size: 2em;
   color: black;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
   text-align: left;
-  margin-left: 5vw;
-  margin-top: 5vh;
-  position: relative;
-  z-index: 10;
+  margin-left: 5vw; /* Ensure it’s not centered or pushed too far off-screen */
+  margin-right: auto;
+  display: inline-block; /* Keep the title inline with the buttons */
+  vertical-align: middle;
 }
 
+.generated-title-container {
+  display: flex;
+  flex-direction: row; /* Align title and buttons horizontally */
+  justify-content: flex-start; /* Push buttons to the right */
+  align-items: center; /* Vertically align title and buttons */
+  width: 100%; /* Ensure full width */
+  margin-top: 20px; /* Space from top */
+}
+
+.action-btn {
+  padding: 15px 30px;
+  background-color: #e0e0e0;
+  color: black;
+  border: none;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #007bff; /* Dark blue on hover */
+  color: white; /* Change text color to white */
+}
+
+.button-container {
+  display: flex; /* Keep the buttons next to the title */
+  gap: 10px; /* Space between buttons */
+  justify-content: flex-end;
+  padding-right:100px;
+}
 
 h1 {
   text-align: center;
@@ -50,6 +83,7 @@ h1 {
   color: black;
   margin-top: 30px;
   margin-bottom: 20px;
+
 }
 
 /* Centering the entire container */
@@ -107,30 +141,38 @@ h1 {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Title for the questions */
 .questions-title-container {
-  width: 100%; /* Ensure it spans the width of the container */
-  text-align: left; /* Align the text to the left */
-  margin-top: 20px;
-  margin-left: 10%; /* Slight left indentation for a polished look */
+  display: flex;
+  justify-content: flex-start; /* Space out title and buttons */
+  align-items: center; /* Align vertically */
+  width: 100%; /* Ensure it spans full width */
+  margin-bottom: 10px; /* Add space between title and questions */
+margin-top: 45vh;
 }
+
 
 .questions-title {
   font-size: 1.8em; /* Slightly smaller than the main title */
   font-weight: 600;
   color: black;
   font-family: 'Montserrat', sans-serif;
+  margin-right: 20px;
 }
 
 .questions-container {
-  margin-top: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 90vw;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 60vw;
+  padding: 10px; /* Add padding for a neater look */
 }
 
+.questions-container ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
 .question {
   margin: 10px 0;
   padding: 15px 20px;
@@ -138,25 +180,47 @@ h1 {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1.2em;
-  width: 80%;
+  width: 100%;
   text-align: left;
 }
 
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
+/* Spinner styles */
+/* Spinner styles */
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #007bff; /* Blue */
+  border-radius: 50%;
+  width: 100px; /* Increase the size of the spinner */
+  height: 100px; /* Increase the size of the spinner */
+  animation: spin 1s linear infinite; /* Smooth spinning animation */
+  margin-bottom: 20px; /* Space between spinner and text */
 }
 
+/* Smooth spinning animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* Adjust this as needed */
+}
+
+/* Smooth fade-in transition for loading text */
 .loading-text {
   font-size: 2em;
   color: black;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  animation: fadeIn 1s ease-in-out infinite;
+  animation: fadeIn 1s ease-in-out infinite; /* Add 'infinite' to make it blink continuously */
 }
 
+/* Fade-in keyframes */
 @keyframes fadeIn {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
