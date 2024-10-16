@@ -30,6 +30,19 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.generated-title {
+  font-size: 2em;
+  color: black;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+  margin-left: 5vw;
+  margin-top: 5vh;
+  position: relative;
+  z-index: 10;
+}
+
+
 h1 {
   text-align: center;
   font-size: 2.2em;
@@ -94,17 +107,28 @@ h1 {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Adjusted to give space between the title and questions */
+/* Title for the questions */
+.questions-title-container {
+  width: 100%; /* Ensure it spans the width of the container */
+  text-align: left; /* Align the text to the left */
+  margin-top: 20px;
+  margin-left: 10%; /* Slight left indentation for a polished look */
+}
+
+.questions-title {
+  font-size: 1.8em; /* Slightly smaller than the main title */
+  font-weight: 600;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .questions-container {
-  margin-top: 100vh; /* Increase the margin to move questions down */
+  margin-top: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%; /* Allow the container to take 80% of the page width */
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  max-width: 90vw;
 }
 
 .question {
@@ -114,12 +138,10 @@ h1 {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1.2em;
-  width: 100%; /* Use full width of container */
-  max-width: 800px; /* Ensure questions don't get too wide */
+  width: 80%;
   text-align: left;
 }
 
-/* Loading container */
 .loading-container {
   display: flex;
   justify-content: center;
