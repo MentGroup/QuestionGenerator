@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
-  background: linear-gradient(135deg, #b0e7fc, #f5f5f5); 
+  background: linear-gradient(135deg, #b0e7fc, #f5f5f5);
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
   margin: 0;
@@ -30,27 +30,25 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-
-
 .generated-title {
   font-size: 2em;
   color: black;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
   text-align: left;
-  margin-left: 5vw; /* Ensure it’s not centered or pushed too far off-screen */
+  margin-left: 5vw;
   margin-right: auto;
-  display: inline-block; /* Keep the title inline with the buttons */
+  display: inline-block;
   vertical-align: middle;
 }
 
 .generated-title-container {
   display: flex;
-  flex-direction: row; /* Align title and buttons horizontally */
-  justify-content: flex-start; /* Push buttons to the right */
-  align-items: center; /* Vertically align title and buttons */
-  width: 100%; /* Ensure full width */
-  margin-top: 20px; /* Space from top */
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .action-btn {
@@ -65,15 +63,15 @@ body {
 }
 
 .action-btn:hover {
-  background-color: #007bff; /* Dark blue on hover */
-  color: white; /* Change text color to white */
+  background-color: #007bff;
+  color: white;
 }
 
 .button-container {
-  display: flex; /* Keep the buttons next to the title */
-  gap: 10px; /* Space between buttons */
+  display: flex;
+  gap: 10px;
   justify-content: flex-end;
-  padding-right:100px;
+  padding-right: 100px;
 }
 
 h1 {
@@ -83,10 +81,8 @@ h1 {
   color: black;
   margin-top: 30px;
   margin-bottom: 20px;
-
 }
 
-/* Centering the entire container */
 .input-form-container {
   display: flex;
   flex-direction: column;
@@ -94,11 +90,11 @@ h1 {
   justify-content: center;
   margin-top: 40px;
   height: 60vh;
-  width: 100%; /* Full width to ensure it takes up the page */
+  width: 100%;
 }
 
 .input-textarea {
-  width: 250%; /* Use the width you like */
+  width: 250%;
   height: 350px;
   font-size: 1.2em;
   padding: 20px;
@@ -108,8 +104,8 @@ h1 {
   background-color: rgba(255, 255, 255, 0.9);
   outline: none;
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
-  transform: translateX(-50%); /* Shifts the input box left by 50% of its width */
-  margin-left: 50%; /* Centers the box and allows it to expand in both directions */
+  transform: translateX(-50%);
+  margin-left: 50%;
 }
 
 .input-textarea:focus,
@@ -143,63 +139,58 @@ h1 {
 
 .questions-title-container {
   display: flex;
-  justify-content: flex-start; /* Space out title and buttons */
-  align-items: center; /* Align vertically */
-  width: 100%; /* Ensure it spans full width */
-  margin-bottom: 10px; /* Add space between title and questions */
-margin-top: 45vh;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 45vh;
 }
 
-/* Hover effect */
 .question:hover {
-  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Highlight on hover */
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
 }
 
 .question {
   margin: 10px 0;
-  padding: 15px 20px; /* Padding for aesthetics */
+  padding: 15px 20px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1.2em;
-  width: 100%; /* Full width */
-  transition: background-color 0.3s ease; /* Smooth transition */
-  cursor: pointer; /* Change cursor to pointer */
+  width: 100%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .question-input {
   width: 80%;
-  min-height: 40px; /* Minimum height for the input */
-  max-height: 100px; /* Optional: limit max height */
-  border: none; /* Remove border */
-  background-color: #ffffff; /* Solid white background */
-  padding: 10px 20px; /* Match padding */
-  font-size: inherit; /* Match font size */
-  border-radius: 10px; /* Match border radius */
-  outline: none; /* Remove outline */
-  opacity: 1; /* Fully visible */
-  resize: vertical; /* Allow vertical resizing */
-  transition: opacity 0.3s ease; /* Transition for visibility */
+  min-height: 40px;
+  max-height: 100px;
+  border: none;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  font-size: inherit;
+  border-radius: 10px;
+  outline: none;
+  opacity: 1;
+  resize: vertical;
+  transition: opacity 0.3s ease;
 }
 
-
-/* Show input on hover */
 .question:hover .question-input {
-  opacity: 1; /* Show input on hover */
+  opacity: 1;
 }
 
-/* Ensure the question text remains visible */
 .question span {
-  display: block; /* Display span as block to occupy space */
+  display: block;
 }
-
 
 .question:hover {
-  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Highlight on hover */
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
 }
 
 .questions-title {
-  font-size: 1.8em; /* Slightly smaller than the main title */
+  font-size: 1.8em;
   font-weight: 600;
   color: black;
   font-family: 'Montserrat', sans-serif;
@@ -212,53 +203,48 @@ margin-top: 45vh;
   justify-content: flex-start;
   align-items: flex-start;
   max-width: 60vw;
-  padding: 10px; /* Add padding for a neater look */
+  padding: 10px;
   min-height: 900px;
   max-height: 950px;
 }
 
 .questions-container ul {
-  list-style: none; /* Remove default bullet points */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Spinner styles */
 .spinner {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #007bff; /* Blue */
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #007bff;
   border-radius: 50%;
-  width: 100px; /* Increase the size of the spinner */
-  height: 100px; /* Increase the size of the spinner */
-  animation: spin 1s linear infinite; /* Smooth spinning animation */
-  margin-bottom: 20px; /* Space between spinner and text */
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
 }
 
-/* Smooth spinning animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Loading container */
 .loading-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh; /* Adjust this as needed */
+  height: 60vh;
 }
 
-/* Smooth fade-in transition for loading text */
 .loading-text {
   font-size: 2em;
   color: black;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  animation: fadeIn 1s ease-in-out infinite; /* Add 'infinite' to make it blink continuously */
+  animation: fadeIn 1s ease-in-out infinite;
 }
 
-/* Fade-in keyframes */
 @keyframes fadeIn {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }

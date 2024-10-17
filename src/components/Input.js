@@ -19,7 +19,7 @@ function InputForm({ onGenerate, setLoading, prompt, setPrompt }) {
       });
 
       const data = await response.json();
-      onGenerate(data.questions); // Send questions to parent component
+      onGenerate(data.questions);
     } catch (error) {
       console.error('Error generating questions:', error);
     }
@@ -32,8 +32,8 @@ function InputForm({ onGenerate, setLoading, prompt, setPrompt }) {
       <textarea
         className="input-textarea"
         placeholder="Enter your description here..."
-        value={prompt} // Bind the value to the prompt state
-        onChange={(e) => setPrompt(e.target.value)} // Update prompt state on change
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
       />
       <div className="button-container">
         <button type="submit" className="generate-btn">
