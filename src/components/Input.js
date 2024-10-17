@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function InputForm({ onGenerate, setLoading }) {
-  const [prompt, setPrompt] = useState('');
+function InputForm({ onGenerate, setLoading, prompt, setPrompt }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +32,8 @@ function InputForm({ onGenerate, setLoading }) {
       <textarea
         className="input-textarea"
         placeholder="Enter your description here..."
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
+        value={prompt} // Bind the value to the prompt state
+        onChange={(e) => setPrompt(e.target.value)} // Update prompt state on change
       />
       <div className="button-container">
         <button type="submit" className="generate-btn">

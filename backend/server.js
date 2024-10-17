@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 // Set up the OpenAI API key
 const openai = new OpenAIApi({ apiKey: process.env.OPENAI_API_KEY });  // Direct use of OpenAIApi with API key
 
-// Route to handle question generation
 app.post('/generate-questions', async (req, res) => {
   const { prompt } = req.body;
 
@@ -27,25 +26,36 @@ app.post('/generate-questions', async (req, res) => {
       messages: [
         {
           role: 'system',
-          content: 'You are a helpful assistant helping students prepare for mentor sessions.'
+          content: `
+            You are a helpful assistant generating high-quality, detailed questions for mentoring sessions. 
+            The questions should be insightful and practical, allowing for up to two sentences per question. 
+            The questions should not include any bullet points, hyphens, or numbering. Ensure the questions are clearly written without unnecessary formatting.
+          `
         },
         {
           role: 'user',
           content: `
             The following is a description written by a student preparing for a mentoring call.
-            Based only this description/text, generate 10-15 straightforward questions the student could ask 
-            their mentor to gain more insight and guidance. Keep the questions practical and helpful for the mentoring session, Ensure the response only includes the questions, without any extra text:
-
+            Based only on this description, generate 10-15 detailed, insightful questions the student could ask 
+            their mentor to gain more insight and guidance. Allow for up to two sentences per question. 
+            Keep the questions practical and helpful for the mentoring session. **Do not include any numbering, bullet points, 
+            hyphens, or any other symbols in the output.** The output should be just plain questions, one per line, without 
+            any special formatting or additional text.
+        
             Student's Description: "${prompt}"
           `
-        }
+        }        
       ],
       max_tokens: 2000,
       temperature: 0.7,
     });
 
-    // Split the response into individual questions
-    const questions = completion.choices[0].message.content.trim().split('\n').filter(Boolean);
+    // Process the response to remove any leading bullet points, hyphens, or numbering
+    const questions = completion.choices[0].message.content
+      .trim()
+      .split('\n')
+      .map(question => question.replace(/^-|\d+\.\s*/, '').trim()) // Remove leading hyphens or numbers
+      .filter(Boolean); // Remove any empty strings
 
     // Return the generated questions in JSON format
     res.json({ questions });

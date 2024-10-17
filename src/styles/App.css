@@ -150,6 +150,53 @@ h1 {
 margin-top: 45vh;
 }
 
+/* Hover effect */
+.question:hover {
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Highlight on hover */
+}
+
+.question {
+  margin: 10px 0;
+  padding: 15px 20px; /* Padding for aesthetics */
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+  width: 100%; /* Full width */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.question-input {
+  width: 80%;
+  min-height: 40px; /* Minimum height for the input */
+  max-height: 100px; /* Optional: limit max height */
+  border: none; /* Remove border */
+  background-color: #ffffff; /* Solid white background */
+  padding: 10px 20px; /* Match padding */
+  font-size: inherit; /* Match font size */
+  border-radius: 10px; /* Match border radius */
+  outline: none; /* Remove outline */
+  opacity: 1; /* Fully visible */
+  resize: vertical; /* Allow vertical resizing */
+  transition: opacity 0.3s ease; /* Transition for visibility */
+}
+
+
+/* Show input on hover */
+.question:hover .question-input {
+  opacity: 1; /* Show input on hover */
+}
+
+/* Ensure the question text remains visible */
+.question span {
+  display: block; /* Display span as block to occupy space */
+}
+
+
+.question:hover {
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Highlight on hover */
+}
 
 .questions-title {
   font-size: 1.8em; /* Slightly smaller than the main title */
@@ -166,6 +213,8 @@ margin-top: 45vh;
   align-items: flex-start;
   max-width: 60vw;
   padding: 10px; /* Add padding for a neater look */
+  min-height: 900px;
+  max-height: 950px;
 }
 
 .questions-container ul {
@@ -173,18 +222,7 @@ margin-top: 45vh;
   padding: 0; /* Remove default padding */
   margin: 0; /* Remove default margin */
 }
-.question {
-  margin: 10px 0;
-  padding: 15px 20px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 1.2em;
-  width: 100%;
-  text-align: left;
-}
 
-/* Spinner styles */
 /* Spinner styles */
 .spinner {
   border: 8px solid #f3f3f3; /* Light grey */
